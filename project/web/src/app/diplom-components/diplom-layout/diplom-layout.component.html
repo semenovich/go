@@ -1,0 +1,35 @@
+<div class="content">
+  <div class="mat-elevation-z6 main-nav">
+    <div class="docs-navbar-header">
+      <button *ngIf="tab != ''" (click)="changeTab('')" mat-button><a rel="">Дипломы</a></button>
+      <button *ngIf="tab === ''" (click)="changeTab('')" mat-button color="accent"><a rel="">Дипломы</a></button>
+      <button *ngIf="tab != 'pm' && isAdmin" (click)="changeTab('pm')" mat-button><a rel="pm">Руководители</a></button>
+      <button *ngIf="tab === 'pm' && isAdmin" (click)="changeTab('pm')" mat-button color="accent"><a rel="pm">Руководители</a></button>
+      <button *ngIf="tab != 'reviewer' && isAdmin" (click)="changeTab('reviewer')" mat-button><a rel="reviewer">Рецензенты</a></button>
+      <button *ngIf="tab === 'reviewer' && isAdmin" (click)="changeTab('reviewer')" mat-button color="accent"><a rel="reviewer">Рецензенты</a></button>
+      <button *ngIf="tab != 'normcontroller' && isAdmin" (click)="changeTab('normcontroller')" mat-button><a rel="normcontroller">Нормоконтролеры</a></button>
+      <button *ngIf="tab === 'normcontroller' && isAdmin" (click)="changeTab('normcontroller')" mat-button color="accent"><a rel="normcontroller">Нормоконтролеры</a></button>
+      <button *ngIf="tab != 'chairman' && isAdmin" (click)="changeTab('chairman')" mat-button><a rel="chairman">Председатели</a></button>
+      <button *ngIf="tab === 'chairman' && isAdmin" (click)="changeTab('chairman')" mat-button color="accent"><a rel="chairman">Председатели</a></button>
+      <button *ngIf="tab != 'commission' && isAdmin" (click)="changeTab('commission')" mat-button><a rel="commission">Комиссия</a></button>
+      <button *ngIf="tab === 'commission' && isAdmin" (click)="changeTab('commission')" mat-button color="accent"><a rel="commission">Комиссия</a></button>
+      <button *ngIf="tab != 'diplomOrder' && isAdmin" (click)="changeTab('diplomOrder')" mat-button><a rel="diplomOrder">Приказы</a></button>
+      <button *ngIf="tab === 'diplomOrder' && isAdmin" (click)="changeTab('diplomOrder')" mat-button color="accent"><a rel="diplomOrder">Приказы</a></button>
+      <button *ngIf="tab != 'specialyty' && isAdmin" (click)="changeTab('specialyty')" mat-button><a rel="diplomOrder">Специальности</a></button>
+      <button *ngIf="tab === 'specialyty' && isAdmin" (click)="changeTab('specialyty')" mat-button color="accent"><a rel="diplomOrder">Специальности</a></button>
+      <button mat-button (click)="changeTxt()">Вывод</button>
+      <button mat-button (click)="protection()">Защита</button>
+      <button mat-button style="margin-left: auto;" (click)="changeRole()" *ngIf="!isAdmin">Завкафедры</button>
+    </div>
+  </div>
+  <div style="margin-top: 8vh;">
+    <app-diplom [ngClass]="{ hidden: tab !== '' }"></app-diplom>
+    <app-pm [ngClass]="{ hidden: tab !== 'pm' }"></app-pm>
+    <app-diplom-chairman [ngClass]="{ hidden: tab !== 'chairman' }"></app-diplom-chairman>
+    <app-diplom-commission [ngClass]="{ hidden: tab !== 'commission' }"></app-diplom-commission>
+    <app-diplom-reviewer [ngClass]="{ hidden: tab !== 'reviewer' }"></app-diplom-reviewer>
+    <app-diplom-normocontroller [ngClass]="{ hidden: tab !== 'normcontroller' }"></app-diplom-normocontroller>
+    <app-diplom-order [ngClass]="{ hidden: tab !== 'diplomOrder' }"></app-diplom-order>
+    <app-diplom-specialyty [ngClass]="{ hidden: tab !== 'specialyty' }"></app-diplom-specialyty>
+  </div>
+</div>

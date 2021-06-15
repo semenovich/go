@@ -1,0 +1,33 @@
+<div class="content">
+  <div>
+    <div class="content__nav">
+      <button *ngIf="tab != 'add'" (click)="changeTab('add')" mat-button><a rel="add">Добавить</a></button>
+      <button *ngIf="tab === 'add'" (click)="changeTab('add')" mat-button color="accent"><a rel="add">Добавить</a>
+      </button>
+      <button *ngIf="tab === 'change'" (click)="changeTab('change')" mat-button color="accent"><a rel="">Изменение</a>
+      </button>
+    </div>
+    <form style="padding: 1rem 0.5rem; box-sizing: border-box;" class="container-fluid form-diplom" [formGroup]="specialytyForm">
+      <mat-form-field class="full-width">
+        <mat-label>Специальность:</mat-label>
+        <input matInput formControlName="Name"/>
+      </mat-form-field>
+      <button mat-raised-button color="primary" style="width: 100%;" (click)="onSubmit()"
+              type="submit">{{buttonTitleAdd ? 'Добавить' : 'Изменить'}}</button>
+    </form>
+  </div>
+  <div *ngIf="specialytyList" style="height: 92vh; overflow: auto; border-left: 1px solid; padding: 1rem;">
+    <div *ngFor="let specialyty of specialytyList">
+      <div *ngIf="specialyty.Id>0"
+           style="border-bottom: 1px solid; padding: 0.5rem 0; display:flex; justify-content: start; align-items: center">
+        <label>Специальность: <strong> {{specialyty.Name}}</strong></label>
+        <button style="margin-left: auto; margin-right: 8px;" mat-raised-button color="primary" (click)="changeSpecialyty(specialyty.Id)">
+          Редактировать
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteSpecialyty(specialyty.Id)">
+          Удалить
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

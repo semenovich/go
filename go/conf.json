@@ -1,0 +1,4 @@
+{
+  "port": ":8181",
+  "static_path": "web//dist//web"
+}

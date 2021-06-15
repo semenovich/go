@@ -1,0 +1,14 @@
+<div *ngIf="load" style="width: 100%; height: 100%; display:flex; justify-content: center; align-items: center;">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="content" *ngIf="!load">
+  <app-diplom-detail
+    [infoAboutDiplom]="infoAboutDiplom"
+    [isDiplomSelect]="isDiplomSelect"
+    [selectDiplomId]="selectDiplomId"
+  ></app-diplom-detail>
+  <app-diplom-list
+    [infoAboutDiplom]="infoAboutDiplom"
+    [diplomsList]="diplomsList"
+  ></app-diplom-list>
+</div>

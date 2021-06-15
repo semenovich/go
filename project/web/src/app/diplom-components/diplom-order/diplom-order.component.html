@@ -1,0 +1,39 @@
+<div class="content">
+  <div>
+    <div class="content__nav">
+      <button *ngIf="tab != 'add'" (click)="changeTab('add')" mat-button><a rel="add">Добавить</a></button>
+      <button *ngIf="tab === 'add'" (click)="changeTab('add')" mat-button color="accent"><a rel="add">Добавить</a>
+      </button>
+      <button *ngIf="tab === 'change'" (click)="changeTab('change')" mat-button color="accent"><a rel="">Изменение</a>
+      </button>
+    </div>
+    <form style="padding: 1rem 0.5rem; box-sizing: border-box;" class="container-fluid form-diplom" [formGroup]="diplomOrderForm">
+      <mat-form-field class="full-width">
+        <mat-label>№:</mat-label>
+        <input matInput formControlName="Name"/>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Дата:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="Dateorder">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button color="primary" style="width: 100%;" (click)="onSubmit()"
+              type="submit">{{buttonTitleAdd ? 'Добавить' : 'Изменить'}}</button>
+    </form>
+  </div>
+  <div *ngIf="diplomOrderList" style="height: 92vh; overflow: auto; border-left: 1px solid; padding: 1rem;">
+    <div *ngFor="let diplomOrder of diplomOrderList">
+      <div *ngIf="diplomOrder.Id>0"
+           style="border-bottom: 1px solid; padding: 0.5rem 0; display:flex; justify-content: start; align-items: center">
+        <label>Приказ №: <strong>{{diplomOrder.Name}}&nbsp;{{strToDate(diplomOrder.Dateorder)}}</strong></label>
+          <button style="margin-left: auto; margin-right: 8px;" mat-raised-button color="primary" (click)="changeDiplomOrder(diplomOrder.Id)">
+            Редактировать
+          </button>
+          <button mat-raised-button color="warn" (click)="deleteDiplomOrder(diplomOrder.Id)">
+            Удалить
+          </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.hidden {
+  display: none;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  color: #212529;
+  border-bottom: 1px solid #212529;
+  .navbar__el {
+    border: 1px solid;
+    padding: 0.2rem;
+  }
+}
+.content {
+  height: 100vh;
+  display: grid;
+  grid-auto-rows: auto auto;
+}
+
+.docs-navbar-header {
+  background: #3f51b5;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 8px 16px;
+  color: white;
+}
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  max-height: 8vh;
+}
+
+a:hover {
+  text-decoration: none;
+}

@@ -1,0 +1,85 @@
+<div *ngIf="diplomsList && infoAboutDiplom" style="height: 92vh; overflow: auto; background: #3f51b5" multi="true">
+  <mat-accordion *ngIf="diplomsList">
+    <mat-expansion-panel *ngFor="let diplom of diplomsList">
+      <mat-expansion-panel-header style="border-bottom: 1px solid">
+        <mat-panel-title>
+          <div style="display:flex;width: 100%; align-items: center">
+            <strong>{{createTitleString(diplom)}}</strong>
+            <button *ngIf="isAdmin" style="margin-left: auto;" mat-raised-button color="primary"
+                    (click)="changeDiplom($event, diplom.Id)">Редактировать
+            </button>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <div class="row" style="padding-top: 0.5rem;">
+          <div class="col-12">
+            <div class="form-group">
+              <label>Тема: <strong>{{diplom.Topic}}</strong></label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label>Нормоконтролер: <strong>{{getNormcontroller(diplom.NormcontrollerId)}}</strong></label>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Рецензент: <strong>{{getReviewer(diplom.ReviewerId)}}</strong></label>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Срок исполнения: <strong>{{strToDate(diplom.Execution)}}</strong></label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label>Комиссия: <strong>{{getCommission(diplom.CommissionId)}}</strong></label>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="form-group">
+              <label>Комментарий: <strong>{{diplom.CommissionComment}}</strong></label>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="padding-top: 0.5rem; border-top: 1px solid #212529;">
+          <div class="col-4">
+            <div class="form-group">
+              <label>Дата защиты: <strong>{{strToDate(diplom.Deadline)}}</strong></label>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Номер в очереди: <strong>{{diplom.Queuenumber}}</strong></label>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Председатель: <strong>{{getChairman(diplom.ChairmanId)}}</strong></label>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Оценка: <strong>{{diplom.Score}}</strong></label>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="padding-top: 0.5rem; border-top: 1px solid #212529;">
+          <div style="width: 100%; display: flex; justify-content: flex-end">
+            <button mat-raised-button color="primary" (click)="openDiplom(diplom.Id)">Защита
+            </button>
+            <button *ngIf="isAdmin" style="margin-left: 8px;" mat-raised-button color="warn"
+                    (click)="deleteDiplom(diplom.Id)">Удалить
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
